@@ -1,32 +1,35 @@
 const fs = require('fs');
+const http = require('http');
 
+//////////////////////////////////////////////////
+//// FILES
 
 //Blocking, Synchronous 
 
-const textIn = fs.readFileSync('./txt/input.txt', 'utf-8');
+// const textIn = fs.readFileSync('./txt/input.txt', 'utf-8');
 
-console.log(textIn);
+// console.log(textIn);
 
-const textOut = `This is all we know about Avacados. ${textIn} \n Created On: ${Date.now()}`;
+// const textOut = `This is all we know about Avacados. ${textIn} \n Created On: ${Date.now()}`;
 
-fs.writeFileSync('./txt/output.txt', textOut);
+// fs.writeFileSync('./txt/output.txt', textOut);
 
-console.log('File written!!');
+// console.log('File written!!');
 
 
 //Non-Blocking, Asynchronous
 
-const text = fs.readFile('./txt/start.txt', 'utf-8', (err, data) => {
-    console.log(data);
-});
+// const text = fs.readFile('./txt/start.txt', 'utf-8', (err, data) => {
+//     console.log(data);
+// });
 
-console.log("Will read file!");
+// console.log("Will read file!");
 
-fs.readFile('./txt/startttt.txt', 'utf-8', (err, data) => {
-    if(err){
-        return console.log("ERROR 💥😈");
-    }
-});
+// fs.readFile('./txt/startttt.txt', 'utf-8', (err, data) => {
+//     if(err){
+//         return console.log("ERROR 💥😈");
+//     }
+// });
 
 // fs.readFile('./txt/start.txt', 'utf-8', (err, data1) => {
 //     fs.readFile(`./txt/${data1}.txt`, 'utf-8', (err, data2) => {
@@ -39,3 +42,15 @@ fs.readFile('./txt/startttt.txt', 'utf-8', (err, data) => {
 //         });
 //     })
 // });
+
+
+//////////////////////////////////////////////////
+//// SERVER
+
+const server = http.createServer((req, res) => {
+    res.end('Server created Successfully !!');
+});
+
+server.listen(8000, '127.0.0.1', () => {
+    console.log("Server is running at port number 8000");
+});
